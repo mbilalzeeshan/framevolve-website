@@ -2,7 +2,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Hero from "@/components/hero/Hero";
 import Stats from "@/components/hero/Stats";
 import Services from "@/components/services/Services";
-import Portfolio from "@/components/portfolio/Portfolio";
+import FeaturedProject from "@/components/featured/FeaturedProject";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <Hero />
       <Stats />
       <Services />
-      <Portfolio />
+      <FeaturedProject />
     </>
   );
 }
