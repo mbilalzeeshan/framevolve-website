@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Button from "@/components/ui/Button";
 
 export default function Hero() {
   return (
@@ -37,13 +38,9 @@ export default function Hero() {
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <button className="rounded-full bg-white px-8 py-4 font-semibold text-black transition hover:scale-105">
-            Book Free Consultation
-          </button>
+          <Button>Book Free Consultation</Button>
 
-          <button className="rounded-full border border-white/10 px-8 py-4 transition hover:bg-white/10">
-            View Portfolio
-          </button>
+          <Button variant="outline">View Portfolio</Button>
         </div>
       </motion.div>
     </section>
