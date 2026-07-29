@@ -1,47 +1,59 @@
-import Image from "next/image";
 import { featuredProject } from "@/lib/data/portfolio";
 
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
+import ImageGallery from "./ImageGallery";
 
 export default function FeaturedProject() {
   return (
-    <section id="portfolio">
-      <Container className="py-24">
+    <section
+      id="portfolio"
+      className="border-y border-white/10 bg-gradient-to-b from-black via-zinc-950 to-black"
+    >
+      <Container className="py-28">
         <SectionHeading
           badge="Featured Project"
           title={featuredProject.title}
           description={featuredProject.description}
         />
 
-        <div className="mb-12 flex flex-wrap gap-3">
-          <Badge text={featuredProject.status} />
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          {/* Left Side - Gallery */}
+          <ImageGallery
+            images={featuredProject.images}
+            title={featuredProject.title}
+          />
 
-          {featuredProject.services.map((service) => (
-            <Badge key={service} text={service} />
-          ))}
-        </div>
+          {/* Right Side - Details */}
+          <div>
+            <Badge text={featuredProject.status} />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredProject.images.map((image, index) => (
-            <div
-              key={index}
-              className="group relative aspect-[4/3] overflow-hidden rounded-3xl"
-            >
-              <Image
-                src={image}
-                alt={`${featuredProject.title} ${index + 1}`}
-                fill
-                className="object-cover transition duration-500 group-hover:scale-110"
-              />
+            <h2 className="mt-6 text-4xl font-bold lg:text-5xl">
+              {featuredProject.title}
+            </h2>
+
+            <p className="mt-2 text-lg text-indigo-400">
+              📍 {featuredProject.location}
+            </p>
+
+            <p className="mt-8 text-lg leading-8 text-gray-400">
+              {featuredProject.description}
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              {featuredProject.services.map((service) => (
+                <Badge key={service} text={service} />
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div className="mt-12 text-center">
-          <Button variant="outline">3D Walkthrough Coming Soon</Button>
+            <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+              <Button>Request Similar Project</Button>
+
+              <Button variant="outline">3D Walkthrough Coming Soon</Button>
+            </div>
+          </div>
         </div>
       </Container>
     </section>
